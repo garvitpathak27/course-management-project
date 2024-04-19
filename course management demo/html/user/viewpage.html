@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Management System</title>
+    <link rel="stylesheet" href="./viewpage1.css">
+    <script>
+        // Sample data structure to store courses, registered courses, and completed courses
+        let courses = [];
+        let registeredCourses = [];
+        let completedCourses = [];
+
+        function postCourse() {
+            // Get course details from the form
+            let courseName = document.getElementById("courseName").value;
+            let courseDescription = document.getElementById("courseDescription").value;
+            let courseSchedule = document.getElementById("courseSchedule").value;
+
+            // Create a new course object
+            let newCourse = {
+                name: courseName,
+                description: courseDescription,
+                schedule: courseSchedule,
+                feePaid: false
+            };
+
+            // Add the new course to the courses array
+            courses.push(newCourse);
+
+            // Clear the form fields
+            document.getElementById("courseName").value = "";
+            document.getElementById("courseDescription").value = "";
+            document.getElementById("courseSchedule").value = "";
+
+            // Update the course list
+            displayCourses();
+        }
+
+        function registerForCourse(courseIndex) {
+            // Add the course to the list of registered courses
+            registeredCourses.push(courses[courseIndex]);
+
+            // Update the course list
+            displayCourses();
+        }
+
+        function deleteRegisteredCourse(courseIndex) {
+            // Remove the course from the list of registered courses
+            registeredCourses.splice(courseIndex, 1);
+
+            // Update the course list
+            displayCourses();
+        }
+
+        function viewCompletedCourses() {
+            // Display the list of completed courses
+            alert("Completed Courses:\n" + completedCourses.map(course => course.name).join("\n"));
+        }
+
+        function payFees(courseIndex) {
+            // Set the feePaid flag to true for the registered course
+            registeredCourses[courseIndex].feePaid = true;
+
+            // Update the course list
+            displayCourses();
+        }
+
+        function completeCourse(courseIndex) {
+            // Move the course from registered to completed courses
+            completedCourses.push(registeredCourses[courseIndex]);
+
+            // Remove the course from registered courses
+            registeredCourses.splice(courseIndex, 1);
+
+            // Update the course list
+            displayCourses();
+        }
+
+        function displayCourses() {
+            let courseList = document.getElementById("courseList");
+            courseList.innerHTML = ""; // Clear previous list
+
+            // Populate the course list
+            courses.forEach(function(course, index) {
+                let listItem = document.createElement("li");
+                listItem.textContent = `${course.name} - ${course.schedule}`;
+
+                // Add buttons for course actions
+                let registerButton = document.createElement("button");
+                registerButton.textContent = "Register";
+                registerButton.onclick = function() {
+                    registerForCourse(index);
+                };
+
+                let viewButton = document.createElement("button");
+                viewButton.textContent = "View Registered";
+                viewButton.onclick = function() {
+                    alert("Registered Courses:\n" + registeredCourses.map(course => course.name).join("\n"));
+                };
+
+                listItem.appendChild(registerButton);
+                listItem.appendChild(viewButton);
+                courseList.appendChild(listItem);
+            });
+
+            // Display registered courses separately
+            let registeredCourseList = document.getElementById("registeredCourseList");
+            registeredCourseList.innerHTML = ""; // Clear previous list
+
+            registeredCourses.forEach(function(course, index) {
+                let listItem = document.createElement("li");
+                listItem.textContent = `${course.name} - ${course.schedule}`;
+
+                // Add buttons for course actions
+                let deleteButton = document.createElement("button");
+                deleteButton.textContent = "Delete";
+                deleteButton.onclick = function() {
+                    deleteRegisteredCourse(index);
+                };
+
+                let payFeesButton = document.createElement("button");
+                payFeesButton.textContent = "Pay Fees";
+                payFeesButton.onclick = function() {
+                    payFees(index);
+                };
+
+                let completeButton = document.createElement("button");
+                completeButton.textContent = "Complete";
+                completeButton.onclick = function() {
+                    completeCourse(index);
+                };
+
+                listItem.appendChild(deleteButton);
+                listItem.appendChild(payFeesButton);
+                listItem.appendChild(completeButton);
+                registeredCourseList.appendChild(listItem);
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Course Management System</h1>
+    <h2>Post Course Details</h2>
+    <form>
+        <label for="courseName">Course Name:</label><br>
+        <input type="text" id="courseName" name="courseName"><br>
+        <label for="courseDescription">Course Description:</label><br>
+        <textarea id="courseDescription" name="courseDescription"></textarea><br>
+        <label for="courseSchedule">Course Schedule:</label><br>
+        <input type="text" id="courseSchedule" name="courseSchedule"><br><br>
+        <button type="button" onclick="postCourse()">Post Course</button>
+    </form>
+
+    <h2>Available Courses</h2>
+    <ul id="courseList"></ul>
+
+    <h2>Registered Courses</h2>
+    <ul id="registeredCourseList"></ul>
+
+    <h2>Completed Courses</h2>
+    <button onclick="viewCompletedCourses()">View Completed Courses</button>
+
+</body>
+</html>

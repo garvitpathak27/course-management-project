@@ -1,0 +1,81 @@
+/* General Styles */
+html, body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, fieldset, input, textarea, button, label {
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif; /* Updated font family */
+    font-size: 100%;
+    background-color: transparent; /* Make background transparent */
+    color: #FEFAE0; /* Cream color for text */
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif; /* Updated font family */
+    background-image: url('./pexels-catiamatos-1072179.jpg'); /* Background image */
+    background-size: cover; /* Cover the entire background */
+    padding: 20px;
+    backdrop-filter: blur(3px); /* Increased blur for the whole page */
+}
+
+form {
+    max-width: 40%; /* Increased form size */
+    max-height: 60%;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Translucent white background */
+    padding: 40px; /* Increased padding */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #FEFAE0; /* Cream color for text */
+    font-family: 'Times New Roman', Times, serif; /* Times Roman font for headings */
+}
+
+/* Style for text, password, email, date, and other inputs */
+form input[type="text"],
+form input[type="password"],
+form input[type="email"],
+form input[type="date"],
+form select {
+    width: 100%;
+    padding: 15px; /* Increased padding */
+    margin-bottom: 20px; /* Increased margin */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.1); /* Translucent white background */
+    color: #ccc;
+}
+
+.error {
+    color: #ff0000;
+}
+
+form button {
+    width: 100%;
+    padding: 15px; /* Increased padding */
+    margin-top: 20px; /* Increased margin */
+    border: none;
+    background-color: rgba(31, 48, 34, 0.7); /* Translucent green color for buttons */
+    color: #FEFAE0; /* Cream color for button text */
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: rgb(55, 109, 65); /* Translucent medium green color for button hover */
+}
+
+a {
+    text-decoration: none;
+    color: #53AB60; /* Lighter green color for links */
+}
+
+a:hover {
+    text-decoration: underline;
+}

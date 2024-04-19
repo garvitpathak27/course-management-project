@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Management System</title>
+    <link rel="stylesheet" href="./viewpage2.css">
+    <script>
+
+        // Sample data structure to store courses and registered users
+        let courses = [];
+
+        function postCourse() {
+            // Get course details from the form
+            let courseName = document.getElementById("courseName").value;
+            let courseDescription = document.getElementById("courseDescription").value;
+            let courseSchedule = document.getElementById("courseSchedule").value;
+
+            // Create a new course object
+            let newCourse = {
+                name: courseName,
+                description: courseDescription,
+                schedule: courseSchedule,
+                registeredUsers: [] // Initialize an empty array for registered users
+            };
+
+            // Add the new course to the courses array
+            courses.push(newCourse);
+
+            // Clear the form fields
+            document.getElementById("courseName").value = "";
+            document.getElementById("courseDescription").value = "";
+            document.getElementById("courseSchedule").value = "";
+
+            // Update the course list
+            displayCourses();
+        }
+
+        function displayCourses() {
+            let courseList = document.getElementById("courseList");
+            courseList.innerHTML = ""; // Clear previous list
+
+            // Populate the course list
+            courses.forEach(function(course) {
+                let listItem = document.createElement("li");
+                listItem.textContent = `${course.name} - ${course.schedule}`;
+                courseList.appendChild(listItem);
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1 class="title">Course Management System</h1>
+    <form>
+        <label for="courseName">Course Name:</label><br>
+        <input type="text" id="courseName" name="courseName"><br>
+        <label for="courseDescription">Course Description:</label><br>
+        <textarea id="courseDescription" name="courseDescription"></textarea><br>
+        <label for="courseSchedule">Course Schedule:</label><br>
+        <input type="text" id="courseSchedule" name="courseSchedule"><br><br>
+        <button type="button" onclick="postCourse()">Post Course</button>
+    </form>
+    <br>
+    <br>
+
+    <h2 class="title">Course List</h2>
+    <ul id="courseList" class="course-list"></ul>
+</body>
+</html>

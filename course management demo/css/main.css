@@ -1,0 +1,95 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1F3022; /* Dark green background */
+    color: #FEFAE0; /* Cream color for text */
+}
+
+a {
+    text-decoration: none;
+    color: #53AB60; /* Lighter green color for links */
+}
+
+/* Navigation Styles */
+.main-nav {
+    border-radius: 5px;
+    background-color: rgba(26, 69, 32, 0.6); /* Translucent dark green background */
+    padding: 10px 0;
+    text-align: right;
+    position: absolute; /* Positioning nav over the image */
+    width: 100%; /* Full width */
+    z-index: 10; /* Ensure nav is above the image */
+}
+
+.nav-button {
+    background-color: rgba(29, 115, 45, 0.6); /* Translucent dark green background */
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    color: antiquewhite
+}
+
+.nav-button:hover {
+    background-color: #53AB60; /* Lighter green background on hover */
+}
+
+.nav-button a {
+    color: #FEFAE0; /* Cream color for text */
+    font-weight: bold;
+}
+
+/* Header Styles */
+header {
+    background-image: url('./pexels-catiamatos-1072179.jpg'); /* Path to your image */
+    background-size: cover; /* Cover the entire header area */
+    background-position: center; /* Center the image in the header */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FEFAE0; /* Cream color for text */
+    padding: 20px 0;
+    text-align: center;
+    position: relative; /* Needed for absolute positioning of nav */
+}
+
+header h1 {
+    font-size: 5rem;
+    font-family:'Times New Roman', Times, serif;
+    z-index: 2; /* Ensure text is above the image */
+}
+
+/* Section Styles */
+section {
+    padding: 20px;
+    border-bottom: 1px solid #213A25; /* Darker green border */
+}
+
+.courses h2,
+.about h2,
+.contact h2 {
+    color: #1D732D; /* Medium green color for headings */
+}
+
+.course-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+/* Footer Styles */
+.main-footer {
+    background-color: #1F3022; /* Darker green background */
+    color: #FEFAE0; /* Cream color for text */
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
